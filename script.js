@@ -228,7 +228,7 @@ function downl(name){
         html = html+ "\n" + "<script>"+ js +"</script>"
     }
     data = `<style>${css}</style>${html}`
-    blob = new Blob([data], {type : "text/plsin"})
+    blob = new Blob([data], {type : "text/plain"})
     var url = URL.createObjectURL(blob)
     var a = document.createElement("a")
     a.href = url
