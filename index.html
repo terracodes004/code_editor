@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" manifest="demo.appcache">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code editor</title>
+    <meta name="description" content="A simple code editor to test out HTML element.">
+    <link rel="icon" href="icon.png">
+    <style>
+        header, footer{
+            background: linear-gradient(skyblue, rgb(0, 191, 255));
+            margin: 0;
+
+        }
+        footer{
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+        header{
+            position: sticky;
+            top: 0%;
+        }
+        body{
+            margin: 0;
+        }
+        nav{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            ul > li{
+                list-style: none;
+            }
+            ul{
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+        .code{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        textarea{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            height: 90%;
+        }
+        fieldset, textarea{
+            margin: 0;
+            height: 250px;
+        }
+        fieldset{
+            height: 270px;
+        }
+        .run{
+            position: fixed;
+            bottom: 0;
+            border: groove grey 12px;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            resize: both;
+        }
+        aside{
+            width: 100%;
+            overflow-x:scroll;
+        }
+        #cal{
+            float: right;
+        }
+        #cooo{
+            background-color: black;
+            color: aliceblue;
+        }
+        .con{
+            display: grid;
+            grid-template-columns: 1fr 5fr;
+        }
+        .line{
+            background-color: gray;
+            height: 250px;
+            overflow-y: scroll;
+            font-size: 14px;
+        }
+        textarea{
+            font-size: 14px;
+        }
+        dialog{
+            z-index: 100000;
+        }
+         
+        
+        
+    </style>
+</head>
+<body onload="
+let ran = Math.random()
+    for (let index = 0; index < localStorage.length; index++) {
+
+        document.querySelector('aside').innerHTML = document.querySelector('aside').innerHTML+ '<button onclick=\'openn('+index+')\' ondblclick=\'deletee('+index+')\' title=\'Click to open and Double click to delete\'>'+ localStorage.key(index) +'</button>'
+        
+    }
+">
+    <dialog style="width: 90%; height: 90%;">
+        <dialog id="cooo"><button id="call" onclick="call()">⛔</button></dialog>
+        <button id="con" onclick="conn()">Run console</button>
+        <button onclick="document.getElementById('cooo').innerHTML = `<button id=\'call\' onclick=\'call()\'>⛔</button>`">Clear</button>
+        <button id="cal" accesskey="k" onclick="cal()">⛔</button>
+        <iframe id="runn" width="100%" height="100%"></iframe>
+    </dialog>
+
+    <header>
+        <img src="icon.png" alt="The company's icon" width="100px">
+        <h1>Code Editor</h1>
+        <nav>
+            <input type="text" style="padding-right: 1cm;" id="name">
+            <ul>
+                <li><button style="width: 100%;" accesskey="j" onclick="opennn(document.getElementById('name').value)" title="Open a dialog for result.">Open</button></li>
+                <li><button style="width: 100%;" title="Double click to save code." accesskey="h" ondblclick="save()">Save</button></li>
+                <li><button style="width: 100%;" title="Run code" accesskey="z" onclick="run()">Run</button></li>
+                <li><button style="width: 100%;" title="Create a new code" accesskey="n" onclick="newFile()">New</button>
+                   
+                </li>
+                <li> <a href="https://w3school.com" target="_blank">
+                    <button style="width: 100%;">Learn</button></a></li>
+                    <li> 
+                    <button style="width: 100%;" onclick="
+                            if(document.getElementById('name') == ''){
+                                //ksk
+                                alert('Name your project before download')
+                            } else{
+
+                                downl(document.getElementById('name').value)
+                            }
+                        
+                        ">Download</button></li>
+            </ul>
+        </nav>
+    </header>
+    <aside>
+
+    </aside>
+    <main>
+        <div class="code">
+            <fieldset> <legend>HTML</legend>
+                <div class="con">
+                    <div class="line" id="lhtml"></div>
+            <textarea id="html" onchange="nnnn('html')"  oninput="nnnn('html')" onfocus="nnnn('html')" wrap="off"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html></textarea></div></fieldset>
+            <fieldset> <legend>CSS</legend>
+                <div class="con">
+                    <div class="line" id="lcss"></div>
+
+            <textarea  wrap="off" oninput="nnnn('css')" onchange="nnnn('css')"  onfocus="nnnn('css')"  id="css"></textarea></div></fieldset>
+            <fieldset> <legend>JS</legend><div class="con">
+                <div class="line" id="ljs"></div>
+
+            <textarea wrap="off" oninput="nnnn('js')" onfocus="nnnn('js')" onchange="nnnn('js')" id="js"></textarea></fieldset>
+        </div>
+        </div>
+        <script src="script.js">
+        
+    </script>
+        <iframe title="run" id="run" width="100%">
+    
+            </html>
+        </iframe>
+    </main>
+    <footer>A simple code editor. Nothing special</footer>
+    
+</body>
+</html>
